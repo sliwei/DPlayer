@@ -68,27 +68,13 @@
                 </label>
             </div>
         </div>
-        <input class="dplayer-comment-input" type="text" placeholder="{{ tran('Input danmaku, hit Enter') }}" maxlength="30">
-        <button class="dplayer-icon dplayer-send-icon" data-balloon="{{ tran('Send') }}" data-balloon-pos="up">
-            <span class="dplayer-icon-content">{{@ icons.send }}</span>
-        </button>
+
     </div>
     <div class="dplayer-icons dplayer-icons-left">
         <button class="dplayer-icon dplayer-play-icon">
             <span class="dplayer-icon-content">{{@ icons.play }}</span>
         </button>
-        <div class="dplayer-volume">
-            <button class="dplayer-icon dplayer-volume-icon">
-                <span class="dplayer-icon-content">{{@ icons.volumeDown }}</span>
-            </button>
-            <div class="dplayer-volume-bar-wrap" data-balloon-pos="up">
-                <div class="dplayer-volume-bar">
-                    <div class="dplayer-volume-bar-inner" style="background: {{ options.theme }};">
-                        <span class="dplayer-thumb" style="background: {{ options.theme }}"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <span class="dplayer-time">
             <span class="dplayer-ptime">0:00</span> /
             <span class="dplayer-dtime">0:00</span>
@@ -96,7 +82,16 @@
         {{ if options.live }}
         <span class="dplayer-live-badge"><span class="dplayer-live-dot" style="background: {{ options.theme }};"></span>{{ tran('Live') }}</span>
         {{ /if }}
+
+        <div class="dplayer-ccomment">
+            <input {{ if options.banned }} disabled{{ /if }} class="dplayer-comment-input" type="text" placeholder="{{ if options.banned }} 禁言中... {{ else }} {{ tran('Input danmaku, hit Enter') }} {{ /if }}" maxlength="30">
+            <button class="dplayer-icon dplayer-send-icon" data-balloon="{{ tran('Send') }}" data-balloon-pos="up">
+            发送
+            </button>
+        </div>
     </div>
+
+
     <div class="dplayer-icons dplayer-icons-right">
         {{ if options.video.quality }}
         <div class="dplayer-quality">
@@ -132,6 +127,14 @@
             </button>
         </div>
         {{ /if }}
+
+        <div class="dplayer-cdanmu dplayer-setting-item dplayer-setting-showdan">
+          <div class="dplayer-toggle">
+              <input class="dplayer-showdan-setting-input" type="checkbox" name="dplayer-toggle-dan">
+              <label for="dplayer-toggle-dan"></label>
+          </div>
+        </div>
+
         <div class="dplayer-setting">
             <button class="dplayer-icon dplayer-setting-icon" data-balloon="{{ tran('Setting') }}" data-balloon-pos="up">
                 <span class="dplayer-icon-content">{{@ icons.setting }}</span>
@@ -147,13 +150,6 @@
                         <div class="dplayer-toggle">
                             <input class="dplayer-toggle-setting-input" type="checkbox" name="dplayer-toggle">
                             <label for="dplayer-toggle"></label>
-                        </div>
-                    </div>
-                    <div class="dplayer-setting-item dplayer-setting-showdan">
-                        <span class="dplayer-label">{{ tran('Show danmaku') }}</span>
-                        <div class="dplayer-toggle">
-                            <input class="dplayer-showdan-setting-input" type="checkbox" name="dplayer-toggle-dan">
-                            <label for="dplayer-toggle-dan"></label>
                         </div>
                     </div>
                     <div class="dplayer-setting-item dplayer-setting-danunlimit">
@@ -183,12 +179,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="dplayer-volume">
+            <button class="dplayer-icon dplayer-volume-icon">
+                <span class="dplayer-icon-content">{{@ icons.volumeDown }}</span>
+            </button>
+            <div class="dplayer-volume-bar-wrap" data-balloon-pos="up">
+                <div class="dplayer-volume-bar">
+                    <div class="dplayer-volume-bar-inner" style="background: {{ options.theme }};">
+                        <span class="dplayer-thumb" style="background: {{ options.theme }}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="dplayer-full">
-            <button class="dplayer-icon dplayer-full-in-icon" data-balloon="{{ tran('Web full screen') }}" data-balloon-pos="up">
+            <button class="cs-web-full dplayer-icon dplayer-full-in-icon" data-balloon="{{ tran('Web full screen') }}" data-balloon-pos="up">
                 <span class="dplayer-icon-content">{{@ icons.fullWeb }}</span>
             </button>
-            <button class="dplayer-icon dplayer-full-icon" data-balloon="{{ tran('Full screen') }}" data-balloon-pos="up">
-                <span class="dplayer-icon-content">{{@ icons.full }}</span>
+            <button class="cs-full dplayer-icon dplayer-full-icon" data-balloon="{{ tran('Full screen') }}" data-balloon-pos="up">
+                <span class="dplayer-icon-content">{{@ icons.full }}全屏播放</span>
             </button>
         </div>
     </div>

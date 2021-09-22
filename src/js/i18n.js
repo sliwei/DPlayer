@@ -25,7 +25,7 @@ const tranTxt = {
         Top: '顶部',
         Bottom: '底部',
         Rolling: '滚动',
-        'Input danmaku, hit Enter': '输入弹幕，回车发送',
+        'Input danmaku, hit Enter': '快来和老师同学交流一下...',
         'About author': '关于作者',
         'DPlayer feedback': '播放器意见反馈',
         'About DPlayer': '关于 DPlayer 播放器',

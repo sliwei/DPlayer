@@ -74,6 +74,11 @@ class Comment {
     send() {
         this.player.template.commentInput.blur();
 
+        if (this.player.banned) {
+            this.player.notice('你已被禁言，暂时无法发送弹幕哦');
+            return;
+        }
+
         // text can't be empty
         if (!this.player.template.commentInput.value.replace(/^\s+|\s+$/g, '')) {
             this.player.notice(this.player.tran('Please input danmaku content!'));

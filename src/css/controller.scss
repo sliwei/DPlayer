@@ -374,9 +374,9 @@
                 vertical-align: middle;
                 height: 100%;
                 .dplayer-volume-bar {
+                    width: 45px;
                     position: relative;
                     top: 17px;
-                    width: 0;
                     height: 3px;
                     background: #aaa;
                     transition: all 0.3s ease-in-out;
@@ -388,6 +388,7 @@
                         transition: all 0.1s ease;
                         will-change: width;
                         .dplayer-thumb {
+                            transform: scale(1);
                             position: absolute;
                             top: 0;
                             right: 5px;
@@ -398,7 +399,6 @@
                             border-radius: 50%;
                             cursor: pointer;
                             transition: all .3s ease-in-out;
-                            transform: scale(0);
                         }
                     }
                 }
@@ -626,7 +626,7 @@
                 transition: .2s ease-in-out;
             }
             input+label:after {
-                content: "";
+                content: "弹";
                 position: absolute;
                 display: block;
                 left: 0;
@@ -637,13 +637,16 @@
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
                 height: 18px;
                 width: 18px;
+                font-size: 12px;
+                line-height: 18px;
+                color: #c9684e;
             }
             input:checked+label {
-                border-color: rgba(255, 255, 255, 0.5);
+                border-color: #c9684e;
             }
             input:checked+label:before {
                 width: 30px;
-                background: rgba(255, 255, 255, 0.5);
+                background: #c9684e;
             }
             input:checked+label:after {
                 left: 12px;

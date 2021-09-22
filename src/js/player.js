@@ -95,6 +95,7 @@ class DPlayer {
                     this.notice(msg);
                 },
                 apiBackend: this.options.apiBackend,
+                banned: false, // 禁言
                 borderColor: this.options.theme,
                 height: this.arrow ? 24 : 30,
                 time: () => this.video.currentTime,
@@ -618,6 +619,18 @@ class DPlayer {
     static get version() {
         /* global DPLAYER_VERSION */
         return DPLAYER_VERSION;
+    }
+
+    setBanned(boolean) {
+        this.banned = boolean;
+        console.log(this.template.commentInput);
+        if (boolean) {
+            this.template.commentInput.placeholder = '禁言中...';
+            this.template.commentInput.disabled = true;
+        } else {
+            this.template.commentInput.placeholder = '快来和老师同学交流一下...';
+            this.template.commentInput.disabled = false;
+        }
     }
 }
 

@@ -21,26 +21,28 @@ class Danmaku {
     }
 
     load() {
-        let apiurl;
-        if (this.options.api.maximum) {
-            apiurl = `${this.options.api.address}v3/?id=${this.options.api.id}&max=${this.options.api.maximum}`;
-        } else {
-            apiurl = `${this.options.api.address}v3/?id=${this.options.api.id}`;
-        }
-        const endpoints = (this.options.api.addition || []).slice(0);
-        endpoints.push(apiurl);
-        this.events && this.events.trigger('danmaku_load_start', endpoints);
-
-        this._readAllEndpoints(endpoints, (results) => {
-            this.dan = [].concat.apply([], results).sort((a, b) => a.time - b.time);
-            window.requestAnimationFrame(() => {
-                this.frame();
-            });
-
-            this.options.callback();
-
-            this.events && this.events.trigger('danmaku_load_end');
-        });
+        // let apiurl;
+        // if (this.options.api.maximum) {
+        //     apiurl = `${this.options.api.address}v3/?id=${this.options.api.id}&max=${this.options.api.maximum}`;
+        // } else {
+        //     apiurl = `${this.options.api.address}v3/?id=${this.options.api.id}`;
+        // }
+        // const endpoints = (this.options.api.addition || []).slice(0);
+        // endpoints.push(apiurl);
+        // this.events && this.events.trigger('danmaku_load_start', endpoints);
+        //
+        // this._readAllEndpoints(endpoints, (results) => {
+        //     this.dan = [].concat.apply([], results).sort((a, b) => a.time - b.time);
+        //     window.requestAnimationFrame(() => {
+        //         this.frame();
+        //     });
+        //
+        //     this.options.callback();
+        //
+        //     this.events && this.events.trigger('danmaku_load_end');
+        // });
+        this.options.callback();
+        this.events && this.events.trigger('danmaku_load_end');
     }
 
     reload(newAPI) {
@@ -102,13 +104,14 @@ class Danmaku {
 
         this.dan.splice(this.danIndex, 0, danmakuData);
         this.danIndex++;
-        const danmaku = {
-            text: this.htmlEncode(danmakuData.text),
-            color: danmakuData.color,
-            type: danmakuData.type,
-            border: `2px solid ${this.options.borderColor}`,
-        };
-        this.draw(danmaku);
+        // const danmaku = {
+        //     text: this.htmlEncode(danmakuData.text),
+        //     color: danmakuData.color,
+        //     type: danmakuData.type,
+        //     border: `2px solid ${this.options.borderColor}`,
+        // };
+        // 自发送
+        // this.draw(danmaku);
 
         this.events && this.events.trigger('danmaku_send', danmakuData);
     }
@@ -307,13 +310,7 @@ class Danmaku {
     }
 
     htmlEncode(str) {
-        return str
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#x27;')
-            .replace(/\//g, '&#x2f;');
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g, '&#x2f;');
     }
 
     resize() {

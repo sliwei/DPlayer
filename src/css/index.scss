@@ -10,3 +10,63 @@
 @import './subtitle';
 @import './video';
 @import './info-panel';
+
+.cs-web-full, .dplayer-time {
+  display: none!important;
+}
+
+.cs-full {
+  width: auto!important;
+  span {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFF;
+    width: 80px;
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+.dplayer-volume-bar {
+  //width: 80px!important;
+}
+
+.dplayer-cdanmu {
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  .dplayer-toggle {
+    position: relative!important;
+    right: 0!important;
+  }
+}
+
+.dplayer-setting, .dplayer-comment-box, .dplayer-live-badge, .dplayer-comment {
+  display: none!important;
+}
+
+.dplayer-ccomment {
+  background-color: #FFF;
+  padding: 0 10px;
+  border-radius: 19px;
+  height: 26px;
+  display: inline-block;
+  .dplayer-comment-input {
+    border: 0;
+    height: 26px;
+    padding: 0;
+    outline: none;
+    font-size: 12px;
+    min-width: 200px;
+  }
+  button {
+    color: #4caf50;
+    font-weight: bold;
+    padding: 0!important;
+    height: 26px;
+  }
+}
